@@ -46,20 +46,19 @@ TARGET_CFLAGS += $(TARGET_CPPFLAGS)
 
 CMAKE_OPTIONS += \
 	-DCMAKE_VERBOSE_MAKEFILE=TRUE \
-	-DENABLE_SHARED=YES \
-	-DENABLE_STATIC=NO \
-	-DENABLE_TESTS=NO
+	-DBUILD_SHARED_LIBS=YES \
+	-DENABLE_UNIT_TESTS=NO
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/opt/include/bcg729
 	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/opt/include/bcg729/*.h \
 		$(1)/opt/include/bcg729
-	$(INSTALL_DIR) $(1)/opt/lib/{cmake/Bcg729,pkgconfig}
+	$(INSTALL_DIR) $(1)/opt/lib/{cmake/BCG729,pkgconfig}
 	$(CP) $(PKG_INSTALL_DIR)/opt/lib/libbcg729.so* $(1)/opt/lib
 	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/opt/lib/pkgconfig/lib$(PKG_NAME).pc \
 		$(1)/opt/lib/pkgconfig
-	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/opt/share/Bcg729/cmake/*.cmake \
-		$(1)/opt/lib/cmake/Bcg729
+	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/opt/share/BCG729/cmake/*.cmake \
+		$(1)/opt/lib/cmake/BCG729
 endef
 
 define Package/bcg729/install
