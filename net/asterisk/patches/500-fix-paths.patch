@@ -70,20 +70,9 @@
  #endif
  
  static struct ast_flags global_flags = { RADIUS_FLAG_USEGMTIME | RADIUS_FLAG_LOGUNIQUEID | RADIUS_FLAG_LOGUSERFIELD };
---- a/channels/chan_alsa.c
-+++ b/channels/chan_alsa.c
-@@ -1021,7 +1021,7 @@ static int load_module(void)
- 
- 	if (soundcard_init() < 0) {
- 		ast_verb(2, "No sound card detected -- console channel will be unavailable\n");
--		ast_verb(2, "Turn off ALSA support by adding 'noload=chan_alsa.so' in /etc/asterisk/modules.conf\n");
-+		ast_verb(2, "Turn off ALSA support by adding 'noload=chan_alsa.so' in /opt/etc/asterisk/modules.conf\n");
- 		unload_module();
- 
- 		return AST_MODULE_LOAD_DECLINE;
 --- a/main/config.c
 +++ b/main/config.c
-@@ -2206,7 +2206,7 @@ static int process_text_line(struct ast_
+@@ -2232,7 +2232,7 @@ static int process_text_line(struct ast_
  
  			if (!ast_test_flag(&flags, CONFIG_FLAG_NOCACHE))
  				config_cache_attribute(configfile, ATTRIBUTE_EXEC, NULL, who_asked);
@@ -162,7 +151,7 @@
  	case CLI_GENERATE:
 --- a/res/res_musiconhold.c
 +++ b/res/res_musiconhold.c
-@@ -219,7 +219,7 @@ struct mohdata {
+@@ -220,7 +220,7 @@ struct mohdata {
  static struct ao2_container *mohclasses;
  
  #define LOCAL_MPG_123 "/usr/local/bin/mpg123"
@@ -208,29 +197,9 @@
  
  	if( dump_extensions ) {
  		dumpfile = fopen("extensions.conf.aeldump","w");
---- a/utils/astdb2bdb.c
-+++ b/utils/astdb2bdb.c
-@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
- 		fprintf(stderr, "%s takes the path of SQLite3 astdb as its only argument\n", basename(argv[0]));
- 		fprintf(stderr, "and will produce a file 'astdb' in the current directory\n"
- 				"Make a backup of any existing Berkeley DB astdb you have and copy\n"
--				"the new astdb to its location: often /var/lib/asterisk/astdb\n");
-+				"the new astdb to its location: often /opt/var/lib/asterisk/astdb\n");
- 		exit(-1);
- 	}
- 
-@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
- 	}
- 
- 	printf("Created ./astdb. Back up any existing astdb and copy the created\n");
--	printf("astdb file to the original's location. Often /var/lib/asterisk/astdb.\n");
-+	printf("astdb file to the original's location. Often /opt/var/lib/asterisk/astdb.\n");
- 
- 	sqlite3_close(sql3db);
- 	return 0;
 --- a/utils/extconf.c
 +++ b/utils/extconf.c
-@@ -3025,7 +3025,7 @@ static int process_text_line(struct ast_
+@@ -3022,7 +3022,7 @@ static int process_text_line(struct ast_
  				if (do_exec) {
  					char cmd[1024];
  
