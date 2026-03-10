@@ -1,8 +1,11 @@
-commit a001cfba33556273cd599868a34b9447aeda0539 (HEAD -> master, origin/master, origin/HEAD)
-Author: Andre Heider <a.heider@gmail.com>
-Date:   Wed Jan 21 10:30:03 2026 +0100
+commit e2c5adab62e25eddeff3e52d4678163f6c9a6c3a (HEAD -> master, origin/master, origin/HEAD)
+Author: Paul Donald <newtwen+github@gmail.com>
+Date:   Tue Feb 24 17:54:54 2026 +0100
 
-    asterisk: VM_MESSAGEFILE
+    asteris-chan-sccp: fix compile for sccp
     
-    Signed-off-by: Andre Heider <a.heider@gmail.com>
+    Provide forward declarations which are absent during compile
+    to resolve compile error. Compile tested only in the hope
+    it's useful.
+    
     Signed-off-by: Paul Donald <newtwen+github@gmail.com>
