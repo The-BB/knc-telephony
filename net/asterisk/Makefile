@@ -670,6 +670,9 @@ CONFIGURE_VARS += \
 	ac_cv_path_CONFIG_NEON29=$(STAGING_DIR)/opt/bin/neon-config
 endif
 
+CONFIGURE_VARS += \
+	EXTERNALS_CACHE_DIR=$(DL_DIR)
+
 MAKE_FLAGS+= \
 	ASTDATADIR="/opt/share/asterisk" \
 	DESTDIR="$(PKG_INSTALL_DIR)"
