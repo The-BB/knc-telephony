@@ -6,7 +6,7 @@ DESC="Asterisk server"
 PROCS="asterisk"
 PROG="/opt/sbin/$PROCS"
 
-pre_cmd() {
+start_pre() {
   dbdir="/opt/var/lib/$PROCS/astdb"
   logdir="/opt/var/log/$PROCS"
   cdrcsvdir="$logdir/cdr-csv"
@@ -29,7 +29,7 @@ pre_cmd() {
   done
 }
 
-PRECMD="pre_cmd"
+PRECMD="start_pre"
 ARGS="-U $PROCS"
 PREARGS=""
 
