@@ -1,11 +1,33 @@
-commit e2c5adab62e25eddeff3e52d4678163f6c9a6c3a (HEAD -> master, origin/master, origin/HEAD)
-Author: Paul Donald <newtwen+github@gmail.com>
-Date:   Tue Feb 24 17:54:54 2026 +0100
+commit 4d8d33a023b24c52cd9443b9dc201fbdfe9c6aef (HEAD -> master, origin/master, origin/HEAD)
+Author: graysky <therealgraysky AT proton DOT me>
+Date:   Thu Dec 25 10:32:44 2025 -0500
 
-    asteris-chan-sccp: fix compile for sccp
+    dahdi-linux: forward-port to 6.18 kernel APIs, fix build flags
     
-    Provide forward declarations which are absent during compile
-    to resolve compile error. Compile tested only in the hope
-    it's useful.
+    This patchset updates DAHDI 3.4.0 to build cleanly on Linux 6.18 and
+    modern OpenWrt toolchains. Changes include:
     
-    Signed-off-by: Paul Donald <newtwen+github@gmail.com>
+    * Add kernel API compatibility shims:
+      - Provide hrtimer_init() wrapper using hrtimer_setup()
+      - Restore from_timer() helper
+      - Map del_timer*() to timer_delete*() on >= 6.15, aligning with
+        upstream PR #93[1].
+    
+    * Replace deprecated EXTRA_CFLAGS with ccflags-y across all Kbuilds
+      to match upstream kernel changes and resolve build failures. Relating
+      to oct612x include paths using ccflags-y, aligning with upstream
+      PR #76.[2]
+    
+    * Use out-of-tree OSLEC for Linux 6.18
+    
+    * Minor Makefile adjustments for OpenWrt packaging consistency.
+    
+    These changes collectively restore a complete, warning-free build of
+    DAHDI 3.4.0 on Linux 6.18 while preserving compatibility with existing
+    drivers and OpenWrt module packaging.
+    
+    1. https://github.com/asterisk/dahdi-linux/issues/93
+    2. https://github.com/asterisk/dahdi-linux/issues/76
+    
+    Signed-off-by: John Audia <therealgraysky@proton.me>
+    Signed-off-by: Daniel Golle <daniel@makrotopia.org>
