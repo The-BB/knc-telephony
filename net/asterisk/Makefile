@@ -9,7 +9,8 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=asterisk
 PKG_VERSION:=23.2.2
-PKG_RELEASE:=1
+# net-snmp (libnetsnmp*) bumped
+PKG_RELEASE:=2
 PKG_CPE_ID:=cpe:/a:digium:asterisk
 
 PKG_SOURCE:=asterisk-$(PKG_VERSION).tar.gz
