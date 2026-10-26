@@ -1,11 +1,10 @@
-commit 5d68d53c160a325ea9d03fce393e051573bcc736 (HEAD -> master, origin/master, origin/HEAD)
-Author: Josef Schlehofer <pepe.schlehofer@gmail.com>
-Date:   Sat Jul 11 21:19:14 2026 +0200
+commit 67281dfcb4f2beee48af0cbf689a71d96f3ce339 (HEAD -> master, origin/master, origin/HEAD)
+Author: Sander van Deijck <sander@vandeijck.com>
+Date:   Sun Oct 18 02:32:03 2026 +0200
 
-    ci: integrate openwrt-bot-worker for formalities validation
+    oslec: drop kernel 6.12 condition
     
-    - Enable comments to give contributors instant feedback
-    - Disable stale bot by default (can be enabled at any time)
-    - Run package test builds only when the formalities check succeeds
+    All targets have been switched to kernel 6.18, so the condition is
+    always true. Drop it.
     
-    Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
+    Signed-off-by: Sander van Deijck <sander@vandeijck.com>
