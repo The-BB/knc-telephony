@@ -11,7 +11,7 @@ PKG_NAME:=asterisk
 PKG_VERSION:=23.2.2
 # net-snmp (libnetsnmp*) bumped
 PKG_RELEASE:=2
-PKG_CPE_ID:=cpe:/a:digium:asterisk
+PKG_CPE_ID:=cpe:/a:sangoma:asterisk
 
 PKG_SOURCE:=asterisk-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://downloads.asterisk.org/pub/telephony/asterisk/releases
