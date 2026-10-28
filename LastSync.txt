@@ -1,10 +1,22 @@
-commit 67281dfcb4f2beee48af0cbf689a71d96f3ce339 (HEAD -> master, origin/master, origin/HEAD)
-Author: Sander van Deijck <sander@vandeijck.com>
-Date:   Sun Oct 18 02:32:03 2026 +0200
+commit 9bcb6d71db03377ff49ccb099be763add9a5b059 (HEAD -> master, origin/master, origin/HEAD)
+Author: Roman Azarenko <roman.azarenko+gh@genexis.eu>
+Date:   Wed May 27 13:45:44 2026 +0200
 
-    oslec: drop kernel 6.12 condition
+    pjproject: update CPE ID
     
-    All targets have been switched to kernel 6.18, so the condition is
-    always true. Drop it.
+    In the official CPE dictionary [1], `cpe:/a:pjsip:pjsip` is marked "deprecated"
+    for most of the recorded versions. The value of `deprecatedBy` points at
+    respective versions under `cpe:/a:teluu:pjsip`.
     
-    Signed-off-by: Sander van Deijck <sander@vandeijck.com>
+    The deprecation marking is pretty recent (2026-05-06). There are CVEs from 2026
+    that reference both the deprecated [2] and the new [3] CPE IDs. It then depends
+    on each particular analysis tool whether it consults the CPE database for
+    deprecations.
+    
+    Update the CPE ID to the non-deprecated value of `cpe:/a:teluu:pjsip`.
+    
+    [1]: https://nvd.nist.gov/products/cpe
+    [2]: https://www.cvedetails.com/vulnerability-list/vendor_id-21360/product_id-65638/Pjsip-Pjsip.html
+    [3]: https://www.cvedetails.com/vulnerability-list/vendor_id-17771/product_id-44396/Teluu-Pjsip.html
+    
+    Signed-off-by: Roman Azarenko <roman.azarenko+gh@genexis.eu>
